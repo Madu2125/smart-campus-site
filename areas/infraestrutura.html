@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Campus — Portal</title>
+  <meta name="description" content="Um site informativo sobre Smart Campus: conectividade, IoT, dados, governança e sustentabilidade." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* fallback caso o CSS não carregue */
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;margin:0}
+  </style>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+
+<body>
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__left">
+        <span class="dot"></span>
+        <span>Portal informativo • Smart Campus</span>
+      </div>
+      <div class="topbar__right">
+        <a href="#contato" class="link-muted">Contato</a>
+        <span class="sep">•</span>
+        <a href="#referencias" class="link-muted">Referências</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="topo">
+    <div class="container header__inner">
+      <a class="brand" href="#topo" aria-label="Página inicial">
+        <span class="brand__mark">SC</span>
+        <span class="brand__text">Smart Campus</span>
+      </a>
+
+      <a class="brand" href="../index.html" aria-label="Página inicial">
+
+
+      <button class="navbtn" id="navbtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    </div>
+
+    <div class="mobile" id="mobileNav" aria-hidden="true">
+      <a href="#o-que-e">O que é</a>
+      <a href="#pilares">Pilares</a>
+      <a href="#arquitetura">Arquitetura</a>
+      <a href="#cases">Cases</a>
+      <a href="../index.html#contato">Contato</a>
+      <a href="../index.html#referencias">Referências</a>
+    </div>
+  </header>
+
+  <!-- Explicacao -->
+  <section class="section section--intro" id="conceito">
+  <div class="container intro">
+    <h2>Infraestrutura Operacional</h2>
+
+    <span class="intro__line"></span>
+
+    <p>
+      A área de Infraestrutura Operacional é utilizada nessa pesquisa para representar 
+      o núcleo operacional da instituição de ensino. É nesse eixo que estão concentrados os 
+      sistemas físicos e técnicos que garantem o funcionamento contínuo do campus, como energia 
+      elétrica, abastecimento de água, redes de dados, ambientes técnicos e manutenção de 
+      equipamentos. Esses elementos sustentam todas as atividades acadêmicas, administrativas 
+      e de pesquisa, formando o verdadeiro backbone do campus.
+    </p>
+
+    <p>
+      No contexto de um <strong>Smart Campus</strong>, a infraestrutura passa a ser
+      orientada por dados, integração e monitoramento contínuo, ou seja,  em tempo real. 
+      O uso de sensores, conectividade e plataformas digitais permite acompanhar consumos,
+      identificar falhas precocemente, otimizar recursos e apoiar a tomada de decisão.
+      Essa abordagem aumenta a eficiência operacional, reduz custos e cria a base necessária 
+      para a evolução das demais camadas de um câmpus inteligente.
+    </p>
+  </div>
+
+  
+<!-- Cases -->
+  <section class="section section--light" id="cases">
+    <div class="container">
+      <div class="section__head">
+        <h2>Aplicações (cases)</h2>
+        <p>Modelos de “entregas” que ficam fáceis de explicar visualmente.</p>
+      </div>
+
+      <div class="grid grid--3">
+        <div class="card card--media">
+          <div class="media" style="background-image:url('../assets/img/energia.jpeg')"></div>
+          <h3>Energia por setor</h3>
+          <p>Medição do consumo elétrico por prédio, laboratório ou setor para identificar picos, sobrecargas e desperdícios.</p>
+        </div>
+
+        <div class="card card--media">
+          <div class="media" style="background-image:url('../assets/img/agua.jpg')"></div>
+          <h3>Água e vazamentos</h3>
+          <p>Telemetria do consumo de água com detecção automática de vazamentos e perdas.</p>
+        </div>
+
+         <div class="card card--media">
+          <div class="media" style="background-image:url('../assets/img/rack.jpg')"></div>
+          <h3>Conectividade & IoT</h3>
+          <p>Infraestrutura de rede (Wi-Fi, backbone, servidores e redes IoT) para suporte aos sistemas do campus.</p>
+        </div>
+
+        <div class="card card--media">
+          <div class="media" style="background-image:url('../assets/img/motor.jpg')"></div>
+          <h3>Manutenção preditiva</h3>
+          <p>Coleta contínua de dados de equipamentos para identificar padrões de falha e antecipar manutenções.</p>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Campus — Portal</title>
+  <meta name="description" content="Um site informativo sobre Smart Campus: conectividade, IoT, dados, governança e sustentabilidade." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* fallback caso o CSS não carregue */
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;margin:0}
+  </style>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+
+<body>
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__left">
+        <span class="dot"></span>
+        <span>Portal informativo • Smart Campus</span>
+      </div>
+      <div class="topbar__right">
+        <a href="#contato" class="link-muted">Contato</a>
+        <span class="sep">•</span>
+        <a href="#referencias" class="link-muted">Referências</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="topo">
+    <div class="container header__inner">
+      <a class="brand" href="#topo" aria-label="Página inicial">
+        <span class="brand__mark">SC</span>
+        <span class="brand__text">Smart Campus</span>
+      </a>
+
+      <a class="brand" href="../index.html" aria-label="Página inicial">
+
+
+      <button class="navbtn" id="navbtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    </div>
+
+    <div class="mobile" id="mobileNav" aria-hidden="true">
+      <a href="#o-que-e">O que é</a>
+      <a href="#pilares">Pilares</a>
+      <a href="#arquitetura">Arquitetura</a>
+      <a href="#cases">Cases</a>
+      <a href="../index.html#contato">Contato</a>
+      <a href="../index.html#referencias">Referências</a>
+    </div>
+  </header>
+
+<!-- Explicacao -->
+  <section class="section section--intro" id="conceito">
+  <div class="container intro">
+    <h2>Dados e Governança</h2>
+
+    <span class="intro__line"></span>
+
+    <p>
+      A área de Dados, Inteligência e Governança representa a camada estratégica do <strong>Smart Campus</strong>, 
+      responsável por transformar os dados gerados pela infraestrutura em informação qualificada para 
+      apoio à tomada de decisão. Esse eixo está diretamente relacionado à Direção Geral, conselhos e 
+      instâncias de gestão do campus, conectando aspectos técnicos à governança institucional.
+    </p>
+
+    <p>
+      Essa camada permite integrar dados de diferentes sistemas, definir
+       indicadores de desempenho, estruturar dashboards de decisão e estabelecer políticas de governança, 
+       segurança e transparência. É nesse ponto que a arquitetura recomendada (sensor → dado → decisão) se consolida, 
+       possibilitando planejamento mais eficiente, gestão orientada por evidências e maior transparência 
+       institucional.
+    </p>
+  </div>
+
+  
+<!-- Cases -->
+  <section class="section section--light" id="cases">
+    <div class="container">
+      <div class="section__head">
+        <h2>Aplicações (cases) para apresentar</h2>
+        <p>Modelos de “entregas” que ficam fáceis de explicar visualmente.</p>
+      </div>
+
+      <div class="grid grid--3">
+        <div class="card card--media">
+          <div class="media" style="background-image:url('../assets/img/dash.png')"></div>
+          <h3>Dashboards de decisão</h3>
+          <p>Visualização integrada de dados de energia, água, ocupação e infraestrutura para apoio à tomada de decisão institucional.</p>
+        </div>
+
+        <div class="card card--media">
+          <div class="media" style="background-image:url('../assets/img/kpi.webp')"></div>
+          <h3>Indicadores de desempenho (KPIs)</h3>
+          <p>Definição e acompanhamento de indicadores do campus para avaliar eficiência operacional, sustentabilidade e uso de recursos.</p>
+        </div>
+
+         <div class="card card--media">
+          <div class="media" style="background-image:url('../assets/img/segur.png')"></div>
+          <h3>Governança de dados</h3>
+          <p>Estruturação de políticas para coleta, uso, padronização e qualidade dos dados institucionais.</p>
+        </div>
+
+        <div class="card card--media">
+          <div class="media" style="background-image:url('../assets/img/transpa.jpg')"></div>
+          <h3>Transparência institucional</h3>
+          <p>Disponibilização de informações e indicadores para a comunidade acadêmica, promovendo transparência.</p>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Campus — Portal</title>
+  <meta name="description" content="Um site informativo sobre Smart Campus: conectividade, IoT, dados, governança e sustentabilidade." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* fallback caso o CSS não carregue */
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;margin:0}
+  </style>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__left">
+        <span class="dot"></span>
+        <span>Portal informativo • Smart Campus</span>
+      </div>
+      <div class="topbar__right">
+        <a href="#contato" class="link-muted">Contato</a>
+        <span class="sep">•</span>
+        <a href="#referencias" class="link-muted">Referências</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="topo">
+    <div class="container header__inner">
+      <a class="brand" href="#topo" aria-label="Página inicial">
+        <span class="brand__mark">SC</span>
+        <span class="brand__text">Smart Campus</span>
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#conceito">O que é</a>
+        <a href="#pilares">Pilares</a>
+        <a href="#beneficios">Benefícios</a>
+        <a href="#participacao">Fale conosco</a>
+        <a href="#contato" class="btn btn--sm">Contato</a>
+      </nav>
+
+      <button class="navbtn" id="navbtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    </div>
+
+    <div class="mobile" id="mobileNav" aria-hidden="true">
+      <a href="#conceito">O que é</a>
+      <a href="#pilares">Pilares</a>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#participacao">Fale conosco</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-slider">
+  <div class="slide active" style="background-image:url('assets/img/hero4.jpg')">
+    <div class="slide__content">
+      <h1>CIDADES DO FUTURO<br>COMEÇAM NO PRESENTE</h1>
+      <p>
+        Um campus totalmente conectado. Dados, serviços e decisões
+        em uma única plataforma inteligente.
+      </p>
+      <a class="btn btn--primary" href="#contato">Fale conosco</a>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('assets/img/hero1.jpg')">
+    <div class="slide__content">
+      <h1>SMART CAMPUS<br>NA PRÁTICA</h1>
+      <p>
+        Energia, água, segurança e governança baseadas em dados.
+      </p>
+      <a class="btn btn--primary" href="#pilares">Saiba mais</a>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('assets/img/hero3.jpeg')">
+    <div class="slide__content">
+      <h1>DADOS PARA<br>DECISÃO INTELIGENTE</h1>
+      <p>
+        Dashboards, indicadores e transparência para a gestão universitária.
+      </p>
+      <a class="btn btn--primary" href="#beneficios">Ver beneficios</a>
+    </div>
+  </div>
+</section>
+
+  <!-- O que é -->
+<section class="section section--intro" id="conceito">
+  <div class="container intro">
+    <h2>O que é Smart Campus?</h2>
+    <span class="intro__line"></span>
+
+    <!-- Resumo (2 parágrafos) -->
+    <p>
+      Um <strong>Smart Campus</strong> é um modelo de instituição de ensino que integra tecnologias digitais,
+      sistemas inteligentes e análise de dados para monitorar e otimizar, em tempo real, o funcionamento do campus.
+      O objetivo é tornar a gestão mais eficiente, sustentável, segura e orientada por dados.
+    </p>
+    <p>
+      Ao unificar informações de diferentes áreas, o campus ganha visão integrada para reduzir desperdícios,
+      apoiar decisões com transparência e melhorar a experiência acadêmica de estudantes e professores.
+    </p>
+
+    <!-- Texto completo colapsável -->
+    <details class="readmore">
+      <summary class="readmore__btn">Saiba mais</summary>
+
+      <div class="readmore__content">
+        <p>
+          Esse conceito baseia-se na <strong>integração de diferentes áreas do campus</strong> por meio de tecnologias
+          como sensores, redes de comunicação, plataformas digitais e computação em nuvem. Dispositivos conectados
+          coletam dados sobre consumo de energia, ocupação de espaços, condições ambientais, segurança e utilização
+          de equipamentos. Essas informações são processadas em sistemas centralizados e apresentadas em painéis de
+          monitoramento (dashboards), permitindo decisões mais rápidas e precisas.
+        </p>
+
+        <p>
+          No âmbito da <strong>infraestrutura e sustentabilidade</strong>, o Smart Campus possibilita o controle automatizado
+          de iluminação, climatização e equipamentos, reduzindo desperdícios e custos operacionais. Na <strong>gestão institucional</strong>,
+          a centralização e análise de dados fortalecem o planejamento, a governança e a transparência. Também impacta a
+          <strong>segurança</strong> e a vivência acadêmica, com monitoramento inteligente e melhor uso de salas e laboratórios.
+        </p>
+
+        <p>
+          Para estudantes e professores, tecnologias educacionais ampliam as possibilidades de ensino e aprendizagem.
+          Por reunir infraestrutura, serviços, governança e pessoas em um ambiente controlado, o campus pode ser entendido
+          como uma <strong>cidade em escala reduzida</strong> e atuar como <strong>laboratório vivo (living lab)</strong>,
+          contribuindo para pesquisa aplicada e soluções replicáveis para cidades inteligentes.
+        </p>
+      </div>
+    </details>
+  </div>
+</section>
+
+
+<!-- Pilares -->
+<section class="section section--solutions" id="pilares">
+  <div class="container">
+    <div class="section-center">
+      <h2>Pilares do Smart Campus</h2>
+      <span class="section-line"></span>
+      <p class="section-sub">
+        Os pilares de um Smart Campus representam as grandes áreas que sustentam o funcionamento inteligente 
+        de uma instituição de ensino. Neste projeto, o IFSC Campus Itajaí foi estruturado em cinco pilares principais detalhados individualmente. 
+      </p>
+    </div>
+
+    <!-- 1) Infra -->
+    <section id="infraestrutura">
+    <article class="area">
+      <div class="area__media" style="background-image:url('assets/img/hero5.jpeg');"></div>
+      <div class="area__content">
+        <h3>Infraestrutura Operacional</h3>
+        <ul class="area__list">
+          <li><b>Energia:</b> medição por setor, alertas e eficiência.</li>
+          <li><b>Água:</b> telemetria, vazamentos e relatórios.</li>
+          <li><b>Rede & TI:</b> Wi-Fi/backbone, LoRaWAN, servidores.</li>
+          <li><b>Manutenção:</b> preventiva/preditiva em ativos críticos.</li>
+        </ul>
+        <a class="btn btn--primary"
+        href="areas/infraestrutura.html">
+       Saiba mais
+      </a>
+      </div>
+    </article>
+
+    <!-- 2) Dados -->
+    <section id="dados"></section>
+    <article class="area area--reverse">
+      <div class="area__media" style="background-image:url('assets/img/hero6.jpg');"></div>
+      <div class="area__content">
+        <h3>Dados e Governança</h3>
+        <ul class="area__list">
+          <li><b>Dashboards:</b> painéis em tempo real (Node-RED/Grafana).</li>
+          <li><b>KPIs:</b> indicadores para gestão e transparência.</li>
+          <li><b>LGPD:</b> privacidade, controle de acesso e auditoria.</li>
+          <li><b>Decisão:</b> dados → ações → melhoria contínua.</li>
+        </ul>
+         <a class="btn btn--primary"
+        href="areas/dados-governanca.html">
+       Saiba mais
+      </a>
+      </div>
+    </article>
+
+    <!-- 3) Ensino -->
+    <section id="ensino"></section>
+    <article class="area">
+      <div class="area__media" style="background-image:url('assets/img/hero7.jpg');"></div>
+      <div class="area__content">
+        <h3>Ensino Inteligente</h3>
+        <ul class="area__list">
+          <li><b>Ocupação:</b> uso real de salas e laboratórios.</li>
+          <li><b>Ambientes:</b> CO₂/temperatura/presença para conforto.</li>
+          <li><b>Gestão acadêmica:</b> dados para apoiar decisões e agenda.</li>
+        </ul>
+         <a class="btn btn--primary"
+        href="areas/ensino-inteligente.html">
+       Saiba mais
+      </a>
+      </div>
+    </article>
+
+    <!-- 4) Pesquisa -->
+    <section id="pesquisa"></section>
+    <article class="area area--reverse">
+      <div class="area__media" style="background-image:url('assets/img/hero8.jpg');"></div>
+      <div class="area__content">
+        <h3>Pesquisa e Inovação</h3>
+        <ul class="area__list">
+          <li><b>Living Lab:</b> campus como laboratório vivo.</li>
+          <li><b>IoT:</b> protótipos LoRaWAN e sensores em campo.</li>
+          <li><b>Dados abertos:</b> base para pesquisa aplicada e extensão.</li>
+        </ul>
+         <a class="btn btn--primary"
+        href="areas/pesquisa-inovacao.html">
+       Saiba mais
+      </a>
+      </div>
+    </article>
+
+    <!-- 5) Inclusão -->
+    <section id="inclusao"></section>
+    <article class="area">
+      <div class="area__media" style="background-image:url('assets/img/hero9.jpg');"></div>
+      <div class="area__content">
+        <h3>Inclusão e Serviços</h3>
+        <ul class="area__list">
+          <li><b>Acessibilidade:</b> rotas acessíveis e sinalização inteligente.</li>
+          <li><b>Comunicação:</b> painéis digitais e integração com sistemas.</li>
+          <li><b>Extensão:</b> impacto público e serviços conectados.</li>
+        </ul>
+        <a class="btn btn--primary"
+        href="areas/inclusao-servicos.html">
+       Saiba mais
+      </a>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+    
+
+ <!-- Beneficios -->
+<section class="section section--pilares" id="beneficios">
+  <div class="container">
+    <div class="section-center">
+      <h2>Benefícios essenciais</h2>
+      <span class="section-line"></span>
+      <p class="section-sub">A implantação de um Smart Campus gera impactos que vão além da tecnologia:</p>
+    </div>
+
+    <div class="grid grid--2">
+      <article class="card card--icon">
+        <div class="icon">⚡</div>
+        <h3>Eficiência operacional</h3>
+        <p>Menos tarefas manuais; Processos mais automáticos; Resposta mais rápida a falhas; Melhor uso de equipes e recursos.</p>
+      </article>
+
+      <article class="card card--icon">
+        <div class="icon">🌱</div>
+        <h3>Redução de desperdícios e custos</h3>
+        <p>Economia de energia elétrica; Uso racional da água; Menos manutenção corretiva; Planejamento baseado em dados reais.</p>
+      </article>
+
+      <article class="card card--icon">
+        <div class="icon">📊</div>
+        <h3>Transparência e apoio à decisão</h3>
+        <p>Indicadores claros; Dados centralizados; Relatórios confiáveis; Decisões baseadas em evidências.</p>
+      </article>
+
+      <article class="card card--icon">
+        <div class="icon">🎓</div>
+        <h3>Qualidade do ambiente acadêmico</h3>
+        <p>Conforto térmico; Ambientes saudáveis; Melhor uso de salas e laboratórios; Apoio direto ao ensino e à aprendizagem.</p>
+      </article>
+
+      <!-- Card "wide" ocupa 2 colunas -->
+      <article class="card card--icon card--wide">
+        <div class="icon">🔬</div>
+        <h3>Inovação, pesquisa e impacto social</h3>
+        <p>Campus como laboratório vivo; Formação prática dos alunos; Base para cidades inteligentes; Integração com políticas públicas e ODS.</p>
+      </article>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>+ Eficiência</b><span>processos mais inteligentes</span></div>
+      <div class="stat"><b>- Desperdício</b><span>energia, água e tempo</span></div>
+      <div class="stat"><b>+ Transparência</b><span>informação acessível e clara</span></div>
+      <div class="stat"><b>+ Experiência</b><span>conforto, ensino e serviços</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Participação -->
+<section class="section section--solutions" id="participacao">
+  <div class="container">
+    <div class="section-center">
+      <h2>Qual sua participação?</h2>
+      <span class="section-line"></span>
+      <p class="section-sub">
+        Ajude a construir a proposta: conte sua rotina no campus e quais são suas principais dificuldades.
+        O objetivo é identificar dores reais antes de propor soluções.
+      </p>
+    </div>
+
+    <div class="solutions-grid">
+
+      <a href="https://forms.gle/3jc5eYAGvXWkjpCB9" class="card-link" target="_blank">
+        <article class="solution-card">
+          <div class="solution-icon">🏛️</div>
+          <h3>Gestão / Administração</h3>
+        </article>
+      </a>
+
+      <a href="https://forms.gle/3jc5eYAGvXWkjpCB9" class="card-link" target="_blank">
+        <article class="solution-card">
+          <div class="solution-icon">👩‍🏫</div>
+          <h3>Professor(a)</h3>
+        </article>
+      </a>
+
+      <a href="https://forms.gle/3jc5eYAGvXWkjpCB9" class="card-link" target="_blank">
+        <article class="solution-card">
+          <div class="solution-icon">🎒</div>
+          <h3>Aluno(a)</h3>
+        </article>
+      </a>
+
+      <a href="https://forms.gle/3jc5eYAGvXWkjpCB9" class="card-link" target="_blank">
+        <article class="solution-card">
+          <div class="solution-icon">🧰</div>
+          <h3>Técnicos / Operação</h3>
+        </article>
+      </a>
+
+      <a href="https://forms.gle/3jc5eYAGvXWkjpCB9" class="card-link" target="_blank">
+        <article class="solution-card">
+          <div class="solution-icon">♿</div>
+          <h3>Acessibilidade / Serviços</h3>
+        </article>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- Referências -->
+  <section class="section section--pilares" id="referencias">
+    <div class="container">
+      <div class="section__head">
+        <h2>Referências</h2>
+      </div>
+
+      <div class="card">
+        <ul class="refs">
+          <ul class="refs">
+
+<li><b>[1]</b> ADIPAT, B.; CHOTIKAPANICH, D. <i>Smart campus and digital transformation in higher education</i>. Journal of Educational Technology & Society, 2024.</li>
+
+<li><b>[2]</b> FERNÁNDEZ-CARAMÉS, T. M.; FRAGA-LAMAS, P. <i>Towards the Internet of Smart Campuses: A review of technologies, services and challenges</i>. Sensors, v. 19, n. 24, 2019.</li>
+
+<li><b>[3]</b> HERNÁNDEZ-ROJAS, D.; FERNÁNDEZ-CARAMÉS, T. M.; FRAGA-LAMAS, P.; ESCUDERO, C. <i>A review of smart campus initiatives</i>. Sensors, v. 18, n. 8, 2018.</li>
+
+<li><b>[4]</b> MIN-ALLAH, N.; ALRASHED, S. <i>Smart campus — A sketch</i>. Sustainable Cities and Society, v. 59, 2020.</li>
+
+<li><b>[5]</b> POLIN, K.; YIGITCANLAR, T.; LIMB, M.; WASHINGTON, T. <i>The making of smart campus: A review and conceptual framework</i>. Buildings, v. 13, n. 891, 2023.</li>
+
+<li><b>[6]</b> VO, H. et al. <i>Smart campus adoption in resource-constrained institutions</i>. IEEE Access, 2022.</li>
+
+<li><b>[7]</b> ZHAO, Y.; ZHANG, Y.; YIP, C.; SWIFT, S.; BESWICK, K. <i>Smart campus: definition, framework, technologies, and services</i>. IET Smart Cities, 2020.</li>
+
+</ul>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section class="section section--light" id="contato">
+    <div class="container">
+      <div class="section__head">
+        <h2>Contato</h2>
+      </div>
+
+   <div class="card">
+  <h3>Fale com a equipe</h3>
+
+  <p class="muted">E-mail: maria.sj@aluno.ifsc.edu.br</p>
+  <p class="muted">Cidade/UF: Itajaí - SC</p>
+
+  <!-- Botão do WhatsApp -->
+  <a class="btn btn--primary"
+     href="https://wa.me/5547988218733?text=Olá,%20gostaria%20de%20falar%20sobre%20o%20projeto%20Smart%20Campus."
+     target="_blank"
+     style="background:#ff6a00; border-color:#ff6a00;">
+     Falar pelo WhatsApp
+  </a>
+</div>
+
+      <footer class="footer">
+        <span>© <span id="year"></span> Smart Campus — Site informativo</span>
+      </footer>
+    </div>
+  </section>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
