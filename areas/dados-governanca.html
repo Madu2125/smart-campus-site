@@ -32,12 +32,14 @@
   <!-- Header -->
   <header class="header" id="topo">
     <div class="container header__inner">
-      <a class="brand" href="#topo" aria-label="Página inicial">
-        <span class="brand__mark">SC</span>
-        <span class="brand__text">Smart Campus</span>
-      </a>
+     <a class="brand brand--ifsc" href="#topo" aria-label="Página inicial">
+    <img src="../assets/img/ifsc itajai.png" alt="Instituto Federal de Santa Catarina - Câmpus Itajaí" class="brand__logo">
+    <div class="brand__texts">
+      <span class="brand__text">Smart Campus</span>
+    </div>
+    </a>
 
-      <a class="brand" href="../index.html" aria-label="Página inicial">
+      <a class="brand" href="../index.html" aria-label="Página inicial"></a>
 
 
       <button class="navbtn" id="navbtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
@@ -53,62 +55,86 @@
     </div>
   </header>
 
-<!-- Explicacao -->
-  <section class="section section--intro" id="conceito">
+<!-- Explicação -->
+<section class="section section--intro" id="conceito">
   <div class="container intro">
     <h2>Dados e Governança</h2>
-
     <span class="intro__line"></span>
 
     <p>
-      A área de Dados, Inteligência e Governança representa a camada estratégica do <strong>Smart Campus</strong>, 
-      responsável por transformar os dados gerados pela infraestrutura em informação qualificada para 
-      apoio à tomada de decisão. Esse eixo está diretamente relacionado à Direção Geral, conselhos e 
-      instâncias de gestão do campus, conectando aspectos técnicos à governança institucional.
+      O pilar de <strong>Dados e Governança</strong> organiza a forma como as informações
+      do campus são coletadas, integradas, interpretadas e utilizadas. No contexto do
+      <strong>Smart Campus</strong>, ele é responsável por transformar dados gerados pela
+      infraestrutura, pelos sistemas institucionais e pelos serviços em informações úteis
+      para apoiar a gestão e o planejamento.
     </p>
 
     <p>
-      Essa camada permite integrar dados de diferentes sistemas, definir
-       indicadores de desempenho, estruturar dashboards de decisão e estabelecer políticas de governança, 
-       segurança e transparência. É nesse ponto que a arquitetura recomendada (sensor → dado → decisão) se consolida, 
-       possibilitando planejamento mais eficiente, gestão orientada por evidências e maior transparência 
-       institucional.
+      No modelo proposto para o <strong>IFSC Câmpus Itajaí</strong>, esse pilar conecta
+      os aspectos técnicos da coleta e análise de dados às necessidades institucionais de
+      transparência, governança e tomada de decisão. Isso inclui a definição de indicadores,
+      dashboards, critérios de acesso, segurança da informação, qualidade dos dados e apoio
+      à construção de uma gestão mais orientada por evidências.
+    </p>
+
+    <p>
+      Dessa forma, os dados deixam de ser apenas registros dispersos e passam a atuar como
+      recurso estratégico para compreender o funcionamento do campus, identificar problemas,
+      acompanhar resultados e orientar melhorias contínuas em diferentes setores da instituição.
+    </p>
+  </div>
+</section>
+
+<!-- Aplicações -->
+<section class="section section--light" id="cases">
+  <div class="container">
+    <div class="section__head">
+      <h2>Como este pilar contribui para o Smart Campus?</h2>
+      <p>
+       Dados e Governança conectam as informações geradas no campus aos processos de gestão,
+  planejamento e tomada de decisão. Por isso, suas aplicações, setores envolvidos, valor
+  entregue e cuidados precisam ser pensados de forma integrada.
+      </p>
+    </div>
+
+<div class="grid grid--3">
+  <div class="card card--media">
+    <div class="media" style="background-image:url('../assets/img/dash.png')"></div>
+    <h3>Aplicações possíveis</h3>
+    <p>
+      Este pilar pode envolver dashboards institucionais, indicadores de desempenho,
+      relatórios automatizados, integração de dados entre sistemas e alertas para apoiar
+      o acompanhamento de recursos, ambientes, serviços e demandas do campus.
     </p>
   </div>
 
-  
-<!-- Cases -->
-  <section class="section section--light" id="cases">
-    <div class="container">
-      <div class="section__head">
-        <h2>Aplicações (cases) para apresentar</h2>
-        <p>Modelos de “entregas” que ficam fáceis de explicar visualmente.</p>
-      </div>
+  <div class="card card--media">
+    <div class="media" style="background-image:url('../assets/img/organizacoes.jpg')"></div>
+    <h3>Setores envolvidos</h3>
+    <p>
+      As ações envolvem a direção, setores administrativos, TI, coordenações, infraestrutura,
+      gestão acadêmica e demais áreas responsáveis por gerar, interpretar ou utilizar dados
+      institucionais no planejamento e na tomada de decisão.
+    </p>
+  </div>
 
-      <div class="grid grid--3">
-        <div class="card card--media">
-          <div class="media" style="background-image:url('../assets/img/dash.png')"></div>
-          <h3>Dashboards de decisão</h3>
-          <p>Visualização integrada de dados de energia, água, ocupação e infraestrutura para apoio à tomada de decisão institucional.</p>
-        </div>
+  <div class="card card--media">
+    <div class="media" style="background-image:url('../assets/img/gestão-de-indicadores.jpg')"></div>
+    <h3>Valor entregue</h3>
+    <p>
+      A organização dos dados contribui para decisões mais transparentes, planejamento mais
+      eficiente, acompanhamento de indicadores, integração entre setores e respostas mais
+      rápidas às necessidades operacionais, acadêmicas e administrativas.
+    </p>
+  </div>
 
-        <div class="card card--media">
-          <div class="media" style="background-image:url('../assets/img/kpi.webp')"></div>
-          <h3>Indicadores de desempenho (KPIs)</h3>
-          <p>Definição e acompanhamento de indicadores do campus para avaliar eficiência operacional, sustentabilidade e uso de recursos.</p>
-        </div>
-
-         <div class="card card--media">
-          <div class="media" style="background-image:url('../assets/img/segur.png')"></div>
-          <h3>Governança de dados</h3>
-          <p>Estruturação de políticas para coleta, uso, padronização e qualidade dos dados institucionais.</p>
-        </div>
-
-        <div class="card card--media">
-          <div class="media" style="background-image:url('../assets/img/transpa.jpg')"></div>
-          <h3>Transparência institucional</h3>
-          <p>Disponibilização de informações e indicadores para a comunidade acadêmica, promovendo transparência.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="card card--media">
+    <div class="media" style="background-image:url('../assets/img/Seguranca-da-Informacao.webp')"></div>
+    <h3>Cuidados necessários</h3>
+    <p>
+      A implementação exige atenção à qualidade dos dados, segurança da informação,
+      controle de acesso, privacidade, integração entre sistemas e definição clara de
+      responsabilidades sobre coleta, uso, armazenamento e compartilhamento das informações.
+    </p>
+  </div>
+</div>
