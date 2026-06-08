@@ -446,7 +446,7 @@ body{
   color:#111;
 }
 .section--light .section-sub{
-  color:#fff !important;
+  color:#666 !important;
 }
 
 /* cards na seção clara */
@@ -480,8 +480,8 @@ body{
 
 /* Subtítulo branco na seção Pilares */
 .section--light .section__head p{
-  color:#fff;
-  opacity:0.9;
+  color:#666;
+  opacity:1;
 }
 
 /* =========================================================
@@ -795,7 +795,6 @@ body{
   grid-column: 1 / -1; /* ocupa as 2 colunas da grid */
 }
 
-
 .card-link {
   text-decoration: none;
   color: inherit;
@@ -816,16 +815,10 @@ body{
   opacity: 0.4;
 }
 
-.card-link {
-  text-decoration: none;   /* remove sublinhado */
-  color: inherit;          /* herda cor normal */
-  display: block;
-}
-
 .card-link h3 {
-  color: #000;             /* preto */
-  font-weight: 700;        /* negrito */
-  text-decoration: none;   /* garante sem sublinhado */
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .readmore {
@@ -864,3 +857,665 @@ body{
   margin-top: 12px;
 }
 html { scroll-behavior: smooth; }
+
+/* =========================================================
+   SEÇÃO: MODELO EM CAMADAS
+========================================================= */
+
+.camadas-section {
+  padding: 90px 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%) !important;
+  color: #1d2b3a !important;
+  border-top: none !important;
+}
+
+.camadas-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.camadas-texto {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 50px;
+}
+
+.section-tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #fff4df;
+  color: #e88a00;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.camadas-texto h2 {
+  font-size: 2.4rem;
+  margin-bottom: 16px;
+  color: #1d2b3a !important;
+}
+
+.camadas-texto p {
+  color: #5d6b7a !important;
+  line-height: 1.7;
+}
+
+.camadas-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.camadas-diagrama {
+  position: relative;
+  width: min(620px, 90vw);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
+/* Remove a aparência padrão dos botões */
+.camadas-section button.camada {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: inherit;
+  margin: 0;
+  background-clip: padding-box;
+}
+
+.camada {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition:
+    opacity 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease,
+    filter 0.35s ease;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-weight: 800;
+  color: #243447;
+  font-size: 0.95rem;
+  padding-top: 28px;
+}
+
+.camada span {
+  pointer-events: none;
+}
+
+/* Círculo externo: Serviços */
+.camada-servicos {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 183, 77, 0.22);
+  border-color: rgba(255, 152, 0, 0.55);
+  z-index: 1;
+}
+
+/* Segundo círculo: Tecnologia */
+.camada-tecnologia {
+  width: 76%;
+  height: 76%;
+  background: rgba(187, 222, 251, 0.45);
+  border-color: rgba(66, 165, 245, 0.45);
+  z-index: 2;
+}
+
+/* Terceiro círculo: Infraestrutura */
+.camada-infraestrutura {
+  width: 52%;
+  height: 52%;
+  background: rgba(200, 230, 201, 0.55);
+  border-color: rgba(102, 187, 106, 0.45);
+  z-index: 3;
+}
+
+/* Centro: Stakeholders */
+.camada-stakeholders {
+  width: 26%;
+  height: 26%;
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(100, 116, 139, 0.35);
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12);
+  z-index: 4;
+  align-items: center;
+  padding-top: 0;
+  text-align: center;
+}
+
+/* Quando alguma camada está ativa */
+.camadas-diagrama.has-active .camada {
+  opacity: 0.45;
+  transform: translate(-50%, -50%) scale(0.94);
+  filter: saturate(0.8);
+}
+
+/* Camada selecionada */
+.camadas-diagrama.has-active .camada.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.06);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+  filter: saturate(1);
+}
+
+/*
+  Importante:
+  Não usamos .camada.active { z-index: 10; }
+  porque isso fazia o círculo externo ficar por cima
+  e bloquear o acesso aos círculos internos.
+*/
+
+.camadas-info {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 34px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  min-height: 360px;
+  transition: all 0.3s ease;
+}
+
+.camadas-info h3 {
+  font-size: 1.6rem;
+  color: #1d2b3a !important;
+  margin-bottom: 14px;
+}
+
+.camadas-info p {
+  color: #5d6b7a !important;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.camadas-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.camadas-info li {
+  padding: 10px 0 10px 28px;
+  position: relative;
+  color: #334155 !important;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.camadas-info li::before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  color: #ff9800;
+  font-weight: bold;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .camadas-content {
+    grid-template-columns: 1fr;
+  }
+
+  .camadas-texto h2 {
+    font-size: 2rem;
+  }
+
+  .camadas-info {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .camadas-section {
+    padding: 70px 16px;
+  }
+
+  .camada {
+    font-size: 0.72rem;
+    padding-top: 18px;
+  }
+
+  .camada-stakeholders {
+    font-size: 0.65rem;
+  }
+
+  .camadas-info {
+    padding: 24px;
+  }
+}
+
+.brand--ifsc {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.brand__logo {
+  height: 54px;
+  width: auto;
+  display: block;
+}
+
+.brand__texts {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand__text {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* =========================================================
+   SEÇÃO: PROTÓTIPOS IOT/LORAWAN
+========================================================= */
+
+.section--prototype {
+  background: #ffffff;
+  color: #111;
+  padding: 90px 0;
+  border-top: 1px solid #eee;
+}
+
+.prototype-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 46px;
+}
+
+.prototype-header h2 {
+  font-size: 42px;
+  line-height: 1.1;
+  margin: 14px 0 16px;
+  color: #111;
+}
+
+.prototype-header p {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 auto;
+}
+
+.prototype-carousel {
+  position: relative;
+}
+
+.prototype-slides {
+  overflow: hidden;
+}
+
+.prototype-slide {
+  display: none;
+}
+
+.prototype-slide.active {
+  display: block;
+}
+
+.prototype-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.prototype-content h3 {
+  font-size: 34px;
+  line-height: 1.15;
+  margin: 0 0 18px;
+  color: #123;
+}
+
+.prototype-content p {
+  color: #555;
+  font-size: 17px;
+  line-height: 1.75;
+  margin: 0 0 16px;
+}
+
+.prototype-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.prototype-tags span {
+  background: rgba(255, 106, 0, 0.1);
+  color: #d95400;
+  border: 1px solid rgba(255, 106, 0, 0.22);
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: 999px;
+  padding: 9px 12px;
+}
+
+.prototype-card {
+  background: #ffffff;
+  border: 1px solid #e9eef5;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
+
+.prototype-card__head {
+  padding: 20px 24px;
+  border-bottom: 1px solid #eef2f7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.prototype-card__head h4 {
+  margin: 0;
+  color: #1d2b3a;
+  font-size: 20px;
+}
+
+.prototype-card__head span {
+  color: #2f9e44;
+  font-size: 13px;
+  font-weight: 700;
+  background: rgba(47, 158, 68, 0.1);
+  border: 1px solid rgba(47, 158, 68, 0.22);
+  border-radius: 999px;
+  padding: 8px 10px;
+}
+
+.prototype-map {
+  width: 100%;
+  height: 360px;
+  background: #eef2f7;
+}
+
+.prototype-data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid #eef2f7;
+}
+
+.prototype-data-grid div {
+  padding: 18px 22px;
+}
+
+.prototype-data-grid div + div {
+  border-left: 1px solid #eef2f7;
+}
+
+.prototype-data-grid strong {
+  display: block;
+  color: #111;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.prototype-data-grid span {
+  color: #555;
+  font-size: 15px;
+}
+
+/* Sensor */
+
+.sensor-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding: 26px;
+}
+
+.sensor-gauge-card {
+  background: #f8fafc;
+  border: 1px solid #eef2f7;
+  border-radius: 20px;
+  padding: 22px;
+  text-align: center;
+}
+
+.sensor-gauge-card p {
+  margin: 12px 0 0;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.gauge {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  position: relative;
+  background:
+    conic-gradient(#ff6a00 0deg, #ff6a00 var(--gauge-value), #e9eef5 var(--gauge-value), #e9eef5 360deg);
+}
+
+.gauge::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px #eef2f7;
+}
+
+.gauge__value,
+.gauge__label {
+  position: relative;
+  z-index: 2;
+}
+
+.gauge__value {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111;
+}
+
+.gauge__label {
+  font-size: 12px;
+  color: #666;
+  margin-top: 34px;
+  position: absolute;
+}
+
+.gauge--temperature {
+  --gauge-value: 104deg;
+}
+
+.gauge--humidity {
+  --gauge-value: 324deg;
+}
+
+.prototype-json {
+  border-top: 1px solid #eef2f7;
+  padding: 16px 22px;
+}
+
+.prototype-json summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #ff6a00;
+}
+
+.prototype-json pre {
+  background: #0b1020;
+  color: #dbeafe;
+  border-radius: 14px;
+  padding: 16px;
+  overflow: auto;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Setas e bolinhas */
+
+.prototype-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 999px;
+  background: #ff6a00;
+  color: #fff;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: 0 14px 30px rgba(0,0,0,.12);
+}
+
+.prototype-arrow:hover {
+  background: #e55f00;
+}
+
+.prototype-arrow--left {
+  left: -22px;
+}
+
+.prototype-arrow--right {
+  right: -22px;
+}
+
+.prototype-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.prototype-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  border: none;
+  background: #d1d5db;
+  cursor: pointer;
+}
+
+.prototype-dot.active {
+  background: #ff6a00;
+}
+
+/* Responsivo */
+
+@media (max-width: 980px) {
+  .prototype-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .prototype-arrow--left {
+    left: 0;
+  }
+
+  .prototype-arrow--right {
+    right: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .prototype-header h2 {
+    font-size: 32px;
+  }
+
+  .prototype-content h3 {
+    font-size: 28px;
+  }
+
+  .sensor-panel,
+  .prototype-data-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prototype-data-grid div + div {
+    border-left: none;
+    border-top: 1px solid #eef2f7;
+  }
+
+  .prototype-map {
+    height: 300px;
+  }
+
+  .prototype-arrow {
+    top: auto;
+    bottom: -64px;
+  }
+}
+
+.tank-extra {
+  padding: 0 26px 24px;
+}
+
+.tank-extra h5 {
+  margin: 0 0 10px;
+  color: #1d2b3a;
+  font-size: 15px;
+}
+
+.tank-extra ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tank-extra li {
+  padding: 10px 0;
+  border-top: 1px solid #eef2f7;
+  color: #555;
+  font-size: 14px;
+}
+
+.tank-extra small {
+  display: block;
+  margin-top: 4px;
+  color: #777;
+  font-size: 12px;
+}
+
+.tank-extra strong {
+  color: #111;
+}
+
+/* =========================================================
+   GRÁFICO DO TANQUE
+========================================================= */
+
+.tank-chart {
+  padding: 0 26px 26px;
+}
+
+.tank-chart h5 {
+  margin: 0 0 14px;
+  color: #1d2b3a;
+  font-size: 15px;
+}
+
+.tank-chart__box {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  max-height: 280px;
+  background: #ffffff;
+  border: 1px solid #eef2f7;
+  border-radius: 18px;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.tank-chart__box canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
