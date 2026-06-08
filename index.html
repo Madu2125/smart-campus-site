@@ -2,15 +2,33 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Smart Campus — Portal</title>
-  <meta name="description" content="Um site informativo sobre Smart Campus: conectividade, IoT, dados, governança e sustentabilidade." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Smart Campus — IFSC Câmpus Itajaí</title>
+
+  <meta 
+    name="description" 
+    content="Site informativo sobre a proposta de Smart Campus para o IFSC Câmpus Itajaí, integrando infraestrutura, dados, tecnologias, serviços e participação da comunidade acadêmica." 
+  />
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Leaflet CSS para o mapa do protótipo GPS/LoRaWAN -->
+  <link 
+    rel="stylesheet" 
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <!-- CSS principal do site -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
   <style>
     /* fallback caso o CSS não carregue */
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;margin:0}
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Arial;
+      margin: 0;
+    }
   </style>
-  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
 <body>
@@ -21,6 +39,7 @@
         <span class="dot"></span>
         <span>Portal informativo • Smart Campus</span>
       </div>
+
       <div class="topbar__right">
         <a href="#contato" class="link-muted">Contato</a>
         <span class="sep">•</span>
@@ -32,17 +51,20 @@
   <!-- Header -->
   <header class="header" id="topo">
     <div class="container header__inner">
-      <a class="brand" href="#topo" aria-label="Página inicial">
-        <span class="brand__mark">SC</span>
-        <span class="brand__text">Smart Campus</span>
-      </a>
+     <a class="brand brand--ifsc" href="#topo" aria-label="Página inicial">
+    <img src="assets/img/itajai_horizontal_marca2015_PNG.png" alt="Instituto Federal de Santa Catarina - Câmpus Itajaí" class="brand__logo">
+    <div class="brand__texts">
+      <span class="brand__text">Smart Campus</span>
+    </div>
+    </a>
 
       <nav class="nav" aria-label="Navegação principal">
         <a href="#conceito">O que é</a>
+        <a href="#camadas">Modelo</a>
         <a href="#pilares">Pilares</a>
         <a href="#beneficios">Benefícios</a>
+        <a href="#prototipo">Protótipo</a>
         <a href="#participacao">Fale conosco</a>
-        <a href="#contato" class="btn btn--sm">Contato</a>
       </nav>
 
       <button class="navbtn" id="navbtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
@@ -50,62 +72,70 @@
 
     <div class="mobile" id="mobileNav" aria-hidden="true">
       <a href="#conceito">O que é</a>
+      <a href="#camadas">Modelo</a>
       <a href="#pilares">Pilares</a>
       <a href="#beneficios">Benefícios</a>
+      <a href="#prototipo">Protótipo</a>
       <a href="#participacao">Fale conosco</a>
-      <a href="#contato">Contato</a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero-slider">
-  <div class="slide active" style="background-image:url('assets/img/hero4.jpg')">
+<!-- Hero -->
+<section class="hero-slider">
+  <div class="slide active" style="background-image:url('assets/img/hero1.jpg')">
     <div class="slide__content">
-      <h1>CIDADES DO FUTURO<br>COMEÇAM NO PRESENTE</h1>
+      <h1>SMART CAMPUS<br>IFSC ITAJAÍ</h1>
       <p>
-        Um campus totalmente conectado. Dados, serviços e decisões
-        em uma única plataforma inteligente.
+        Uma proposta de campus inteligente que integra infraestrutura, dados,
+        tecnologias e participação da comunidade acadêmica para apoiar a gestão,
+        os serviços e a experiência no campus.
       </p>
-      <a class="btn btn--primary" href="#contato">Fale conosco</a>
+      <a class="btn btn--primary" href="#conceito">Conheça o modelo</a>
     </div>
   </div>
 
-  <div class="slide" style="background-image:url('assets/img/hero1.jpg')">
+  <div class="slide" style="background-image:url('assets/img/chat.png')">
     <div class="slide__content">
-      <h1>SMART CAMPUS<br>NA PRÁTICA</h1>
+      <h1>TECNOLOGIA A SERVIÇO<br>DO CAMPUS</h1>
       <p>
-        Energia, água, segurança e governança baseadas em dados.
+        Sensores, conectividade, IoT, LoRaWAN e sistemas digitais podem apoiar
+        o monitoramento de recursos, ambientes e ativos institucionais.
       </p>
-      <a class="btn btn--primary" href="#pilares">Saiba mais</a>
+      <a class="btn btn--primary" href="#camadas">Ver camadas</a>
     </div>
   </div>
 
   <div class="slide" style="background-image:url('assets/img/hero3.jpeg')">
     <div class="slide__content">
-      <h1>DADOS PARA<br>DECISÃO INTELIGENTE</h1>
+      <h1>DADOS PARA<br>DECISÕES MELHORES</h1>
       <p>
-        Dashboards, indicadores e transparência para a gestão universitária.
+        Indicadores, dashboards e governança de dados ajudam a transformar
+        informações do campus em planejamento, transparência e melhoria contínua.
       </p>
-      <a class="btn btn--primary" href="#beneficios">Ver beneficios</a>
+      <a class="btn btn--primary" href="#beneficios">Ver valor entregue</a>
     </div>
   </div>
 </section>
 
-  <!-- O que é -->
+  
+<!-- O que é -->
 <section class="section section--intro" id="conceito">
   <div class="container intro">
     <h2>O que é Smart Campus?</h2>
     <span class="intro__line"></span>
 
-    <!-- Resumo (2 parágrafos) -->
+    <!-- Resumo -->
     <p>
-      Um <strong>Smart Campus</strong> é um modelo de instituição de ensino que integra tecnologias digitais,
-      sistemas inteligentes e análise de dados para monitorar e otimizar, em tempo real, o funcionamento do campus.
-      O objetivo é tornar a gestão mais eficiente, sustentável, segura e orientada por dados.
+      Um <strong>câmpus inteligente</strong> é um modelo que utiliza dados,
+      tecnologias digitais e participação da comunidade acadêmica para melhorar a gestão,
+      os serviços, os ambientes de ensino e a tomada de decisão dentro da instituição.
     </p>
+
     <p>
-      Ao unificar informações de diferentes áreas, o campus ganha visão integrada para reduzir desperdícios,
-      apoiar decisões com transparência e melhorar a experiência acadêmica de estudantes e professores.
+      No contexto do <strong>IFSC Câmpus Itajaí</strong>, essa proposta não se limita à instalação
+      de sensores ou sistemas automatizados. Ela busca integrar infraestrutura, tecnologias,
+      governança de dados, sustentabilidade, ensino, pesquisa, inovação, inclusão e serviços
+      em uma estrutura organizada e aplicável à realidade do campus.
     </p>
 
     <!-- Texto completo colapsável -->
@@ -114,28 +144,93 @@
 
       <div class="readmore__content">
         <p>
-          Esse conceito baseia-se na <strong>integração de diferentes áreas do campus</strong> por meio de tecnologias
-          como sensores, redes de comunicação, plataformas digitais e computação em nuvem. Dispositivos conectados
-          coletam dados sobre consumo de energia, ocupação de espaços, condições ambientais, segurança e utilização
-          de equipamentos. Essas informações são processadas em sistemas centralizados e apresentadas em painéis de
-          monitoramento (dashboards), permitindo decisões mais rápidas e precisas.
+          O Smart Campus parte da ideia de que uma instituição de ensino pode utilizar melhor
+          seus recursos quando consegue coletar, organizar e interpretar informações sobre o
+          próprio funcionamento. Dados sobre energia, água, ocupação de espaços, equipamentos,
+          ambientes acadêmicos, demandas institucionais e serviços podem apoiar decisões mais
+          planejadas, transparentes e alinhadas às necessidades reais da comunidade.
         </p>
 
         <p>
-          No âmbito da <strong>infraestrutura e sustentabilidade</strong>, o Smart Campus possibilita o controle automatizado
-          de iluminação, climatização e equipamentos, reduzindo desperdícios e custos operacionais. Na <strong>gestão institucional</strong>,
-          a centralização e análise de dados fortalecem o planejamento, a governança e a transparência. Também impacta a
-          <strong>segurança</strong> e a vivência acadêmica, com monitoramento inteligente e melhor uso de salas e laboratórios.
+          Para isso, o modelo proposto organiza o campus a partir de duas dimensões complementares:
+          os <strong>pilares estratégicos</strong>, que indicam as áreas de atuação do Smart Campus,
+          e as <strong>camadas funcionais</strong>, que mostram como stakeholders, infraestrutura,
+          tecnologias e serviços inteligentes se conectam para gerar valor ao campus.
         </p>
 
         <p>
-          Para estudantes e professores, tecnologias educacionais ampliam as possibilidades de ensino e aprendizagem.
-          Por reunir infraestrutura, serviços, governança e pessoas em um ambiente controlado, o campus pode ser entendido
-          como uma <strong>cidade em escala reduzida</strong> e atuar como <strong>laboratório vivo (living lab)</strong>,
-          contribuindo para pesquisa aplicada e soluções replicáveis para cidades inteligentes.
+          Dessa forma, o Smart Campus não deve ser entendido apenas como um conjunto de tecnologias,
+          mas como uma estratégia de transformação digital aplicada ao ambiente acadêmico. Seu objetivo
+          é apoiar a eficiência operacional, a sustentabilidade, a governança, a melhoria da experiência
+          acadêmica, a pesquisa aplicada, a inclusão e a participação da comunidade.
+        </p>
+
+        <p>
+          No IFSC Câmpus Itajaí, essa abordagem permite pensar o campus como um ambiente de experimentação
+          e melhoria contínua, no qual soluções como monitoramento de recursos, dashboards, sensores,
+          comunicação integrada, rotas acessíveis, serviços digitais e protótipos com IoT e LoRaWAN podem
+          ser desenvolvidas de forma gradual, conforme as demandas institucionais e a viabilidade técnica.
         </p>
       </div>
     </details>
+  </div>
+</section>
+
+
+<section class="camadas-section" id="camadas">
+  <div class="camadas-container">
+
+    <div class="camadas-texto">
+      <span class="section-tag">Modelo em camadas</span>
+      <h2>Como o Smart Campus funciona?</h2>
+      <p>
+        O modelo de Smart Campus é organizado em camadas que conectam as necessidades
+        da comunidade acadêmica à infraestrutura, às tecnologias e aos serviços inteligentes.
+      </p>
+    </div>
+
+    <div class="camadas-content">
+
+      <div class="camadas-diagrama has-active">
+
+        <button type="button" class="camada camada-servicos" data-layer="servicos">
+          <span>Serviços</span>
+        </button>
+
+        <button type="button" class="camada camada-tecnologia active" data-layer="tecnologia">
+          <span>Tecnologia</span>
+        </button>
+
+        <button type="button" class="camada camada-infraestrutura" data-layer="infraestrutura">
+          <span>Infraestrutura</span>
+        </button>
+
+        <button type="button" class="camada camada-stakeholders" data-layer="stakeholders">
+          <span>Stakeholders</span>
+        </button>
+
+      </div>
+
+      <div class="camadas-info">
+        <h3 id="camada-titulo">Camada de Tecnologia</h3>
+
+        <p id="camada-descricao">
+          Responsável por integrar, processar, proteger e transformar os dados coletados
+          em informações úteis para o campus.
+        </p>
+
+        <ul id="camada-lista">
+          <li>IoT e LoRaWAN</li>
+          <li>GPS e MQTT</li>
+          <li>Bancos de dados</li>
+          <li>APIs e integrações</li>
+          <li>Dashboards e análise de dados</li>
+          <li>Segurança da informação</li>
+        </ul>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
@@ -147,157 +242,309 @@
       <h2>Pilares do Smart Campus</h2>
       <span class="section-line"></span>
       <p class="section-sub">
-        Os pilares de um Smart Campus representam as grandes áreas que sustentam o funcionamento inteligente 
-        de uma instituição de ensino. Neste projeto, o IFSC Campus Itajaí foi estruturado em cinco pilares principais detalhados individualmente. 
+        Os pilares organizam as principais áreas de atuação do modelo de Smart Campus proposto
+        para o IFSC Câmpus Itajaí. Eles ajudam a relacionar infraestrutura, dados, ensino,
+        pesquisa, inovação, inclusão e serviços às necessidades reais da comunidade acadêmica
+        e dos setores institucionais.
       </p>
     </div>
 
-    <!-- 1) Infra -->
-    <section id="infraestrutura">
-    <article class="area">
+    <!-- 1) Infraestrutura e Operação -->
+    <article class="area" id="infraestrutura">
       <div class="area__media" style="background-image:url('assets/img/hero5.jpeg');"></div>
       <div class="area__content">
-        <h3>Infraestrutura Operacional</h3>
+        <h3>Infraestrutura e Operação</h3>
         <ul class="area__list">
-          <li><b>Energia:</b> medição por setor, alertas e eficiência.</li>
-          <li><b>Água:</b> telemetria, vazamentos e relatórios.</li>
-          <li><b>Rede & TI:</b> Wi-Fi/backbone, LoRaWAN, servidores.</li>
-          <li><b>Manutenção:</b> preventiva/preditiva em ativos críticos.</li>
+          <li><b>Base física e digital:</b> energia, água, conectividade, sensores, equipamentos e ambientes do campus.</li>
+          <li><b>Monitoramento:</b> acompanhamento de recursos, ativos e condições operacionais.</li>
+          <li><b>Manutenção:</b> apoio à manutenção preventiva, identificação de falhas e melhor uso dos recursos.</li>
+          <li><b>Sustentabilidade:</b> redução de desperdícios e uso mais responsável da infraestrutura institucional.</li>
         </ul>
-        <a class="btn btn--primary"
-        href="areas/infraestrutura.html">
-       Saiba mais
-      </a>
+        <a class="btn btn--primary" href="areas/infraestrutura.html">
+          Saiba mais
+        </a>
       </div>
     </article>
 
-    <!-- 2) Dados -->
-    <section id="dados"></section>
-    <article class="area area--reverse">
+    <!-- 2) Dados e Governança -->
+    <article class="area area--reverse" id="dados">
       <div class="area__media" style="background-image:url('assets/img/hero6.jpg');"></div>
       <div class="area__content">
         <h3>Dados e Governança</h3>
         <ul class="area__list">
-          <li><b>Dashboards:</b> painéis em tempo real (Node-RED/Grafana).</li>
-          <li><b>KPIs:</b> indicadores para gestão e transparência.</li>
-          <li><b>LGPD:</b> privacidade, controle de acesso e auditoria.</li>
-          <li><b>Decisão:</b> dados → ações → melhoria contínua.</li>
+          <li><b>Dados integrados:</b> organização das informações geradas por sistemas, sensores e setores do campus.</li>
+          <li><b>Indicadores:</b> dashboards, relatórios e métricas para apoiar o planejamento institucional.</li>
+          <li><b>Governança:</b> definição de critérios para coleta, uso, proteção, acesso e compartilhamento de dados.</li>
+          <li><b>Decisão:</b> transformação de dados em informações úteis para uma gestão mais transparente e responsiva.</li>
         </ul>
-         <a class="btn btn--primary"
-        href="areas/dados-governanca.html">
-       Saiba mais
-      </a>
+        <a class="btn btn--primary" href="areas/dados-governanca.html">
+          Saiba mais
+        </a>
       </div>
     </article>
 
-    <!-- 3) Ensino -->
-    <section id="ensino"></section>
-    <article class="area">
+    <!-- 3) Ensino Inteligente -->
+    <article class="area" id="ensino">
       <div class="area__media" style="background-image:url('assets/img/hero7.jpg');"></div>
       <div class="area__content">
         <h3>Ensino Inteligente</h3>
         <ul class="area__list">
-          <li><b>Ocupação:</b> uso real de salas e laboratórios.</li>
-          <li><b>Ambientes:</b> CO₂/temperatura/presença para conforto.</li>
-          <li><b>Gestão acadêmica:</b> dados para apoiar decisões e agenda.</li>
+          <li><b>Ambientes acadêmicos:</b> uso mais adequado de salas, laboratórios e espaços de aprendizagem.</li>
+          <li><b>Conforto e qualidade:</b> monitoramento de condições ambientais que impactam o ensino e a permanência.</li>
+          <li><b>Apoio pedagógico:</b> dados e recursos digitais para apoiar o planejamento e a experiência acadêmica.</li>
+          <li><b>Uso dos espaços:</b> identificação de demandas, ocupação e possibilidades de melhoria nos ambientes de ensino.</li>
         </ul>
-         <a class="btn btn--primary"
-        href="areas/ensino-inteligente.html">
-       Saiba mais
-      </a>
+        <a class="btn btn--primary" href="areas/ensino-inteligente.html">
+          Saiba mais
+        </a>
       </div>
     </article>
 
-    <!-- 4) Pesquisa -->
-    <section id="pesquisa"></section>
-    <article class="area area--reverse">
+    <!-- 4) Pesquisa e Inovação -->
+    <article class="area area--reverse" id="pesquisa">
       <div class="area__media" style="background-image:url('assets/img/hero8.jpg');"></div>
       <div class="area__content">
         <h3>Pesquisa e Inovação</h3>
         <ul class="area__list">
-          <li><b>Living Lab:</b> campus como laboratório vivo.</li>
-          <li><b>IoT:</b> protótipos LoRaWAN e sensores em campo.</li>
-          <li><b>Dados abertos:</b> base para pesquisa aplicada e extensão.</li>
+          <li><b>Living Lab:</b> uso do campus como ambiente real de experimentação, aprendizagem e validação de soluções.</li>
+          <li><b>Projetos aplicados:</b> desenvolvimento de protótipos com IoT, LoRaWAN, automação e análise de dados.</li>
+          <li><b>Integração acadêmica:</b> aproximação entre ensino, pesquisa, extensão e demandas institucionais.</li>
+          <li><b>Inovação gradual:</b> criação de soluções testáveis, escaláveis e compatíveis com a realidade do campus.</li>
         </ul>
-         <a class="btn btn--primary"
-        href="areas/pesquisa-inovacao.html">
-       Saiba mais
-      </a>
+        <a class="btn btn--primary" href="areas/pesquisa-inovacao.html">
+          Saiba mais
+        </a>
       </div>
     </article>
 
-    <!-- 5) Inclusão -->
-    <section id="inclusao"></section>
-    <article class="area">
+    <!-- 5) Inclusão e Serviços -->
+    <article class="area" id="inclusao">
       <div class="area__media" style="background-image:url('assets/img/hero9.jpg');"></div>
       <div class="area__content">
         <h3>Inclusão e Serviços</h3>
         <ul class="area__list">
-          <li><b>Acessibilidade:</b> rotas acessíveis e sinalização inteligente.</li>
-          <li><b>Comunicação:</b> painéis digitais e integração com sistemas.</li>
-          <li><b>Extensão:</b> impacto público e serviços conectados.</li>
+          <li><b>Acessibilidade:</b> apoio a rotas acessíveis, sinalização inteligente e melhoria do acesso à informação.</li>
+          <li><b>Comunicação:</b> integração de canais, serviços digitais e informações úteis para a comunidade acadêmica.</li>
+          <li><b>Participação:</b> valorização das contribuições de estudantes, servidores, setores e comunidade externa.</li>
+          <li><b>Serviços inteligentes:</b> soluções que tornam o campus mais acessível, participativo, conectado e responsivo.</li>
         </ul>
-        <a class="btn btn--primary"
-        href="areas/inclusao-servicos.html">
-       Saiba mais
-      </a>
-
+        <a class="btn btn--primary" href="areas/inclusao-servicos.html">
+          Saiba mais
+        </a>
       </div>
     </article>
 
   </div>
 </section>
-
     
 
- <!-- Beneficios -->
+ <!-- VALOR ENTREGUE -->
 <section class="section section--pilares" id="beneficios">
   <div class="container">
     <div class="section-center">
-      <h2>Benefícios essenciais</h2>
+      <h2>Valor entregue ao campus</h2>
       <span class="section-line"></span>
-      <p class="section-sub">A implantação de um Smart Campus gera impactos que vão além da tecnologia:</p>
+      <p class="section-sub">O Smart Campus não se resume à adoção de tecnologias. 
+        Seu valor está na capacidade de transformar dados, infraestrutura e participação em melhorias 
+        reais para a gestão, o ensino, a pesquisa e a comunidade acadêmica.</p>
     </div>
 
     <div class="grid grid--2">
       <article class="card card--icon">
         <div class="icon">⚡</div>
         <h3>Eficiência operacional</h3>
-        <p>Menos tarefas manuais; Processos mais automáticos; Resposta mais rápida a falhas; Melhor uso de equipes e recursos.</p>
+        <p>Apoia o monitoramento de recursos, ativos e ambientes, contribuindo para reduzir desperdícios, antecipar falhas e melhorar a manutenção do campus.</p>
       </article>
 
       <article class="card card--icon">
         <div class="icon">🌱</div>
-        <h3>Redução de desperdícios e custos</h3>
-        <p>Economia de energia elétrica; Uso racional da água; Menos manutenção corretiva; Planejamento baseado em dados reais.</p>
+        <h3>Sustentabilidade institucional</h3>
+        <p>Incentiva o uso responsável de energia, água, espaços e recursos, articulando eficiência operacional, planejamento e responsabilidade socioambiental.</p>
       </article>
 
       <article class="card card--icon">
         <div class="icon">📊</div>
-        <h3>Transparência e apoio à decisão</h3>
-        <p>Indicadores claros; Dados centralizados; Relatórios confiáveis; Decisões baseadas em evidências.</p>
+        <h3>Apoio à tomada de decisão</h3>
+        <p>Organiza dados em indicadores, relatórios e dashboards, permitindo decisões mais planejadas, transparentes e baseadas em evidências.</p>
       </article>
 
       <article class="card card--icon">
         <div class="icon">🎓</div>
-        <h3>Qualidade do ambiente acadêmico</h3>
-        <p>Conforto térmico; Ambientes saudáveis; Melhor uso de salas e laboratórios; Apoio direto ao ensino e à aprendizagem.</p>
+        <h3>Melhoria da experiência acadêmica</h3>
+        <p>Contribui para ambientes mais confortáveis, acessíveis e adequados às atividades de ensino, pesquisa, extensão e aprendizagem.</p>
       </article>
 
       <!-- Card "wide" ocupa 2 colunas -->
       <article class="card card--icon card--wide">
         <div class="icon">🔬</div>
-        <h3>Inovação, pesquisa e impacto social</h3>
-        <p>Campus como laboratório vivo; Formação prática dos alunos; Base para cidades inteligentes; Integração com políticas públicas e ODS.</p>
+        <h3>Participação e integração da comunidade</h3>
+        <p>Valoriza a colaboração de estudantes, servidores e setores institucionais, permitindo que demandas reais orientem a criação de serviços inteligentes.</p>
       </article>
     </div>
 
     <div class="stats">
-      <div class="stat"><b>+ Eficiência</b><span>processos mais inteligentes</span></div>
-      <div class="stat"><b>- Desperdício</b><span>energia, água e tempo</span></div>
-      <div class="stat"><b>+ Transparência</b><span>informação acessível e clara</span></div>
-      <div class="stat"><b>+ Experiência</b><span>conforto, ensino e serviços</span></div>
+      <div class="stat"><b>Governança</b><span>Dados, indicadores e decisão</span></div>
+      <div class="stat"><b>Sustentabilidade</b><span>Uso responsável de recursos</span></div>
+      <div class="stat"><b>Integração</b><span>Setores, sistemas e serviços</span></div>
+      <div class="stat"><b>Participação</b><span>Comunidade acadêmica no centro</span></div>
     </div>
+  </div>
+</section>
+
+<!-- Protótipos IoT/LoRaWAN -->
+<section class="section section--prototype" id="prototipo">
+  <div class="container">
+
+    <div class="prototype-header">
+      <span class="section-tag">Aplicações práticas</span>
+      <h2>Protótipos IoT/LoRaWAN</h2>
+      <p>
+        Exemplos de aplicação do modelo de Smart Campus utilizando dispositivos conectados,
+        transmissão de dados e visualização das informações recebidas em formato JSON.
+      </p>
+    </div>
+
+    <div class="prototype-carousel">
+
+      <button class="prototype-arrow prototype-arrow--left" id="prototypePrev" aria-label="Protótipo anterior">
+        ‹
+      </button>
+
+      <div class="prototype-slides">
+
+        <!-- Slide 1: GPS -->
+        <article class="prototype-slide active" data-slide="0">
+          <div class="prototype-layout">
+
+            <div class="prototype-content">
+              <h3>Monitoramento GPS do barco-escola</h3>
+
+              <p>
+        Este protótipo demonstra uma aplicação prática do modelo de Smart Campus por meio
+        do monitoramento da localização do barco-escola. A proposta utiliza GPS para obter
+        dados de posição e tecnologia LoRaWAN para viabilizar a comunicação em cenários de
+        baixo consumo e longo alcance.
+      </p>
+
+      <p>
+        As informações de latitude e longitude poderão ser recebidas por meio de uma API
+        conectada ao banco de dados da instituição, em formato JSON, permitindo a exibição
+        da posição atual do ativo em um mapa.
+      </p>
+
+              <div class="prototype-tags">
+                <span>GPS</span>
+                <span>LoRaWAN</span>
+                <span>API/JSON</span>
+                <span>Monitoramento de ativos</span>
+              </div>
+            </div>
+
+            <div class="prototype-card">
+              <div class="prototype-card__head">
+                <h4>Localização atual</h4>
+                <span id="gps-status">Dado simulado</span>
+              </div>
+
+              <div id="mapa-prototipo" class="prototype-map"></div>
+
+              <div class="prototype-data-grid">
+                <div>
+                  <strong>Latitude</strong>
+                  <span id="gps-lat">--</span>
+                </div>
+
+                <div>
+                  <strong>Longitude</strong>
+                  <span id="gps-lng">--</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Slide 2: Sensor do tanque -->
+        <article class="prototype-slide" data-slide="1">
+          <div class="prototype-layout">
+
+            <div class="prototype-content">
+              <h3>Sensor de temperatura e umidade do tanque</h3>
+
+              <p>
+                Este protótipo apresenta a leitura de um sensor instalado em um tanque da
+                instituição. Os dados recebidos incluem temperatura interna, umidade interna,
+                modelo do dispositivo e tipo de alimentação.
+              </p>
+
+              <p>
+                A visualização desses dados permite acompanhar condições ambientais do tanque
+                e pode apoiar futuras análises, alertas ou ações de manutenção e monitoramento.
+              </p>
+
+              <div class="prototype-tags">
+                <span>Sensor ambiental</span>
+                <span>Temperatura Interna</span>
+                <span>Temperatura Externa</span>
+                <span>API/JSON</span>
+              </div>
+            </div>
+
+        <div class="prototype-card">
+  <div class="prototype-card__head">
+    <h4>Temperatura do tanque</h4>
+    <span id="tank-status">Aguardando dados...</span>
+  </div>
+
+  <div class="sensor-panel">
+
+    <div class="sensor-gauge-card">
+      <div class="gauge gauge--temperature gauge--tank-interno">
+        <div class="gauge__value" id="tank-interno">--</div>
+        <div class="gauge__label">Tanque interno</div>
+      </div>
+      <p>Sensor DS18B20 customizado instalado no tanque interno</p>
+    </div>
+
+    <div class="sensor-gauge-card">
+      <div class="gauge gauge--temperature gauge--tank-externo">
+        <div class="gauge__value" id="tank-externo">--</div>
+        <div class="gauge__label">Tanque externo</div>
+      </div>
+      <p>Sensor DS18B20 original da Khomp instalado no tanque externo</p>
+    </div>
+
+  </div>
+
+  <div class="tank-chart">
+  <h5>Comparativo das últimas 24h</h5>
+  <div class="tank-chart__box">
+    <canvas id="tank-chart-24h"></canvas>
+  </div>
+</div>
+
+  <details class="prototype-json">
+    <summary>Ver JSON recebido</summary>
+    <pre id="tank-json"></pre>
+  </details>
+</div>
+
+          </div>
+        </article>
+
+      </div>
+
+      <button class="prototype-arrow prototype-arrow--right" id="prototypeNext" aria-label="Próximo protótipo">
+        ›
+      </button>
+
+    </div>
+
+    <div class="prototype-dots">
+      <button class="prototype-dot active" data-slide="0" aria-label="Ver protótipo GPS"></button>
+      <button class="prototype-dot" data-slide="1" aria-label="Ver sensor do tanque"></button>
+    </div>
+
   </div>
 </section>
 
@@ -408,13 +655,22 @@
   </a>
 </div>
 
-      <footer class="footer">
-        <span>© <span id="year"></span> Smart Campus — Site informativo</span>
-      </footer>
-    </div>
-  </section>
 
-  <script src="assets/js/main.js"></script>
+  <footer class="footer">
+    <span>© <span id="year"></span> Smart Campus — Site informativo</span>
+  </footer>
+</div>
+</section>
+
+<!-- Leaflet JS para o mapa do protótipo GPS/LoRaWAN -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Chart.js para o gráfico do sensor do tanque -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- JavaScript principal do site -->
+<script src="assets/js/main.js"></script>
+
 </body>
 </html>
 
