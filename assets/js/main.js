@@ -467,7 +467,8 @@ const SENSOR_TANQUE_EXTERNO = "temperature_28f250ee90045";
 
 let ultimoTanqueInterno = null;
 let ultimoTanqueExterno = null;
-let ultimoTimestampTanque = null;
+let ultimoTimestampInterno = null;
+let ultimoTimestampExterno = null;
 let tankChart24h = null;
 
 function normalizarRegistroTanque(registro) {
@@ -515,20 +516,14 @@ function obterPayloadsTanque(dados) {
     });
 }
 
-function payloadTemSensoresDoTanque(payload) {
-  return (
-    payload[SENSOR_TANQUE_INTERNO] !== undefined ||
-    payload[SENSOR_TANQUE_EXTERNO] !== undefined
-  );
-}
-
-function encontrarUltimaLeituraValidaTanque(payloads) {
+function encontrarUltimoPayloadComSensor(payloads, sensor) {
   /*
-    Procura o payload mais recente que tenha pelo menos
-    um dos sensores DS18B20 do tanque.
+    Procura o payload mais recente que contém aquele sensor específico.
+    Isso resolve o caso em que um sensor não é reenviado porque o valor
+    permaneceu igual para economia de bateria.
   */
 
-  return payloads.find(payloadTemSensoresDoTanque);
+  return payloads.find((payload) => payload[sensor] !== undefined);
 }
 
 function atualizarGaugeTanque(seletor, valor) {
@@ -545,25 +540,31 @@ function atualizarGaugeTanque(seletor, valor) {
   gauge.style.setProperty("--gauge-value", `${graus}deg`);
 }
 
-function atualizarLeituraTanque(payloadValido) {
-  const valorInterno = payloadValido[SENSOR_TANQUE_INTERNO];
-  const valorExterno = payloadValido[SENSOR_TANQUE_EXTERNO];
-
+function atualizarLeituraTanque(payloads) {
   /*
-    Só atualiza o valor se o payload trouxe o campo.
-    Se não trouxe, mantém o último valor válido.
+    Busca a última leitura válida de cada sensor separadamente.
+    Assim, se o payload mais recente trouxer só o externo, o interno
+    continua mostrando a última leitura válida encontrada anteriormente.
   */
 
-  if (valorInterno !== undefined) {
-    ultimoTanqueInterno = Number(valorInterno);
+  const payloadInterno = encontrarUltimoPayloadComSensor(
+    payloads,
+    SENSOR_TANQUE_INTERNO
+  );
+
+  const payloadExterno = encontrarUltimoPayloadComSensor(
+    payloads,
+    SENSOR_TANQUE_EXTERNO
+  );
+
+  if (payloadInterno) {
+    ultimoTanqueInterno = Number(payloadInterno[SENSOR_TANQUE_INTERNO]);
+    ultimoTimestampInterno = payloadInterno.timestamp;
   }
 
-  if (valorExterno !== undefined) {
-    ultimoTanqueExterno = Number(valorExterno);
-  }
-
-  if (payloadValido.timestamp) {
-    ultimoTimestampTanque = payloadValido.timestamp;
+  if (payloadExterno) {
+    ultimoTanqueExterno = Number(payloadExterno[SENSOR_TANQUE_EXTERNO]);
+    ultimoTimestampExterno = payloadExterno.timestamp;
   }
 
   const tankInterno = document.getElementById("tank-interno");
@@ -572,18 +573,29 @@ function atualizarLeituraTanque(payloadValido) {
 
   if (tankInterno) {
     tankInterno.textContent =
-      ultimoTanqueInterno !== null ? `${ultimoTanqueInterno.toFixed(2)} °C` : "--";
+      ultimoTanqueInterno !== null
+        ? `${ultimoTanqueInterno.toFixed(2)} °C`
+        : "--";
   }
 
   if (tankExterno) {
     tankExterno.textContent =
-      ultimoTanqueExterno !== null ? `${ultimoTanqueExterno.toFixed(2)} °C` : "--";
+      ultimoTanqueExterno !== null
+        ? `${ultimoTanqueExterno.toFixed(2)} °C`
+        : "--";
   }
 
   if (tankStatus) {
-    tankStatus.textContent = ultimoTimestampTanque
-      ? `Atualizado: ${ultimoTimestampTanque}`
-      : "Dado recebido";
+    const ultimoTimestamp =
+      ultimoTimestampInterno && ultimoTimestampExterno
+        ? new Date(ultimoTimestampInterno) > new Date(ultimoTimestampExterno)
+          ? ultimoTimestampInterno
+          : ultimoTimestampExterno
+        : ultimoTimestampInterno || ultimoTimestampExterno;
+
+    tankStatus.textContent = ultimoTimestamp
+      ? `Atualizado: ${ultimoTimestamp}`
+      : "Aguardando sensores";
   }
 
   atualizarGaugeTanque(".gauge--tank-interno", ultimoTanqueInterno);
@@ -593,6 +605,11 @@ function atualizarLeituraTanque(payloadValido) {
 function montarSerie24hTanque(payloads) {
   const agora = Date.now();
   const limite24h = agora - 24 * 60 * 60 * 1000;
+
+  /*
+    Primeiro filtra os payloads das últimas 24h.
+    Depois ordena do mais antigo para o mais recente para montar o gráfico.
+  */
 
   const pontos = payloads
     .filter((payload) => {
@@ -614,26 +631,41 @@ function montarSerie24hTanque(payloads) {
       return dataA - dataB;
     });
 
-  const labels = pontos.map((ponto) => {
+  const labels = [];
+  const dadosInterno = [];
+  const dadosExterno = [];
+
+  /*
+    Esta parte é importante:
+    se um payload não trouxe um dos sensores, o gráfico mantém o último
+    valor conhecido daquele sensor. Isso representa que não houve nova
+    transmissão daquele valor, e não necessariamente ausência de leitura.
+  */
+
+  let valorInternoAtual = null;
+  let valorExternoAtual = null;
+
+  pontos.forEach((ponto) => {
+    if (ponto[SENSOR_TANQUE_INTERNO] !== undefined) {
+      valorInternoAtual = Number(ponto[SENSOR_TANQUE_INTERNO]);
+    }
+
+    if (ponto[SENSOR_TANQUE_EXTERNO] !== undefined) {
+      valorExternoAtual = Number(ponto[SENSOR_TANQUE_EXTERNO]);
+    }
+
     const data = new Date(ponto.timestamp);
 
-    return data.toLocaleTimeString("pt-BR", {
-      hour: "2-digit",
-      minute: "2-digit"
-    });
+    labels.push(
+      data.toLocaleTimeString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit"
+      })
+    );
+
+    dadosInterno.push(valorInternoAtual);
+    dadosExterno.push(valorExternoAtual);
   });
-
-  const dadosInterno = pontos.map((ponto) =>
-    ponto[SENSOR_TANQUE_INTERNO] !== undefined
-      ? Number(ponto[SENSOR_TANQUE_INTERNO])
-      : null
-  );
-
-  const dadosExterno = pontos.map((ponto) =>
-    ponto[SENSOR_TANQUE_EXTERNO] !== undefined
-      ? Number(ponto[SENSOR_TANQUE_EXTERNO])
-      : null
-  );
 
   return {
     labels,
@@ -687,6 +719,10 @@ function atualizarGraficoTanque24h(payloads) {
           tooltip: {
             callbacks: {
               label: function (context) {
+                if (context.parsed.y === null) {
+                  return `${context.dataset.label}: sem leitura anterior`;
+                }
+
                 return `${context.dataset.label}: ${context.parsed.y} °C`;
               }
             }
@@ -718,31 +754,56 @@ function atualizarGraficoTanque24h(payloads) {
 
 function atualizarSensorTanque(dadosOriginais) {
   const payloads = obterPayloadsTanque(dadosOriginais);
-  const payloadValido = encontrarUltimaLeituraValidaTanque(payloads);
+
+  const payloadInterno = encontrarUltimoPayloadComSensor(
+    payloads,
+    SENSOR_TANQUE_INTERNO
+  );
+
+  const payloadExterno = encontrarUltimoPayloadComSensor(
+    payloads,
+    SENSOR_TANQUE_EXTERNO
+  );
 
   const tankStatus = document.getElementById("tank-status");
   const tankJson = document.getElementById("tank-json");
 
-  if (!payloadValido) {
-    /*
-      Se a API respondeu, mas nenhum payload recente trouxe
-      os sensores DS18B20, o site não troca os valores atuais.
-    */
+  /*
+    Se a API respondeu, mas nenhum dos últimos payloads trouxe os sensores
+    DS18B20, o site mantém a última leitura válida já exibida.
+  */
 
+  if (!payloadInterno && !payloadExterno) {
     if (tankStatus) {
-      tankStatus.textContent = ultimoTimestampTanque
-        ? `Sem nova leitura dos sensores`
-        : "Aguardando sensores";
+      tankStatus.textContent =
+        ultimoTanqueInterno !== null || ultimoTanqueExterno !== null
+          ? "Sem nova leitura. Mantendo último valor válido."
+          : "Aguardando sensores";
     }
 
     return;
   }
 
-  atualizarLeituraTanque(payloadValido);
+  atualizarLeituraTanque(payloads);
   atualizarGraficoTanque24h(payloads);
 
   if (tankJson) {
-    tankJson.textContent = JSON.stringify(payloadValido, null, 2);
+    tankJson.textContent = JSON.stringify(
+      {
+        tanque_interno: {
+          sensor: SENSOR_TANQUE_INTERNO,
+          valor: ultimoTanqueInterno,
+          atualizado_em: ultimoTimestampInterno
+        },
+        tanque_externo: {
+          sensor: SENSOR_TANQUE_EXTERNO,
+          valor: ultimoTanqueExterno,
+          atualizado_em: ultimoTimestampExterno
+        }
+      },
+      null,
+      2
+    );
   }
 }
 
@@ -762,9 +823,10 @@ async function carregarDadosTanque() {
     const tankStatus = document.getElementById("tank-status");
 
     if (tankStatus) {
-      tankStatus.textContent = ultimoTimestampTanque
-        ? "Erro ao atualizar. Mantendo última leitura."
-        : "Erro ao buscar API";
+      tankStatus.textContent =
+        ultimoTanqueInterno !== null || ultimoTanqueExterno !== null
+          ? "Erro ao atualizar. Mantendo último valor válido."
+          : "Erro ao buscar API";
     }
   }
 }
