@@ -42,58 +42,80 @@ if (slides.length > 1) {
 }
 
 const camadasData = {
-  stakeholders: {
-    titulo: "Stakeholders",
+  solucao: {
+    titulo: "Camada de Problema e Solução",
     descricao:
-      "Usuários, setores e agentes institucionais ocupam o centro do modelo. Suas necessidades orientam o desenvolvimento das soluções e dos serviços oferecidos.",
+      "Representa o ponto de partida do modelo. Antes da escolha de tecnologias ou da definição da infraestrutura, é necessário compreender as demandas reais do câmpus, identificar os problemas e propor soluções capazes de gerar valor aos stakeholders.",
     itens: [
-      "Estudantes",
-      "Docentes",
-      "Técnicos administrativos",
-      "Gestores",
-      "Setor de TI e infraestrutura",
-      "Comunidade acadêmica e externa"
-    ]
-  },
-
-  infraestrutura: {
-    titulo: "Camada de Infraestrutura",
-    descricao:
-      "Representa a base física, digital e operacional que permite coletar, transmitir e armazenar dados no campus.",
-    itens: [
-      "Sensores e atuadores",
-      "Rede elétrica e conectividade",
-      "Dispositivos físicos do campus",
-      "Gateways e servidores",
-      "Laboratórios e ambientes técnicos"
+      "Identificação de demandas",
+      "Mapeamento de problemas do câmpus",
+      "Proposição de soluções",
+      "Definição dos benefícios esperados",
+      "Participação da comunidade acadêmica",
+      "Priorização das necessidades reais"
     ]
   },
 
   tecnologia: {
     titulo: "Camada de Tecnologia",
     descricao:
-      "Responsável por integrar, processar, proteger e transformar os dados coletados em informações úteis para o campus.",
+      "Reúne os recursos, sistemas e ferramentas que viabilizam tecnicamente a solução proposta. A tecnologia é definida a partir do problema identificado e orienta quais recursos serão necessários para implementar a solução.",
     itens: [
-      "IoT e LoRaWAN",
-      "GPS e MQTT",
+      "Internet das Coisas",
+      "LoRaWAN",
+      "GPS",
+      "The Things Network",
+      "Webhooks e APIs",
       "Bancos de dados",
-      "APIs e integrações",
-      "Dashboards e análise de dados",
+      "Dashboards e visualização de dados",
       "Segurança da informação"
     ]
   },
 
-  servicos: {
-    titulo: "Camada de Serviços",
+  infraestrutura: {
+    titulo: "Camada de Infraestrutura",
     descricao:
-      "Representa as aplicações que entregam valor aos usuários, transformando dados e tecnologias em soluções úteis para o cotidiano acadêmico, administrativo e operacional.",
+      "Corresponde aos ambientes, equipamentos, redes e recursos físicos ou digitais necessários para que as tecnologias escolhidas possam ser aplicadas no contexto real do câmpus.",
+    itens: [
+      "Sensores e atuadores",
+      "Dispositivos físicos do câmpus",
+      "Gateways LoRaWAN",
+      "Servidores e conectividade",
+      "Rede elétrica e internet",
+      "Laboratórios e ambientes técnicos",
+      "Equipamentos institucionais"
+    ]
+  },
+
+  servicos: {
+    titulo: "Camada de Serviço Entregue",
+    descricao:
+      "Representa o resultado final disponibilizado aos stakeholders e ao câmpus. É a camada em que a solução se transforma em serviço, melhoria ou apoio à tomada de decisão.",
     itens: [
       "Monitoramento de energia e água",
+      "Monitoramento ambiental",
+      "Localização e acompanhamento de ativos",
       "Alertas e notificações",
-      "Localização e monitoramento de ativos",
       "Dashboards administrativos",
+      "Site colaborativo",
       "Serviços de apoio à gestão",
       "Aplicações para ensino, pesquisa e extensão"
+    ]
+  },
+
+  stakeholders: {
+    titulo: "Stakeholders",
+    descricao:
+      "Estão no centro do modelo e se relacionam diretamente com todas as camadas. Eles identificam problemas, expressam demandas, participam da construção das soluções, apoiam a definição das tecnologias, utilizam ou mantêm a infraestrutura e se beneficiam dos serviços entregues.",
+    itens: [
+      "Estudantes",
+      "Docentes",
+      "Técnicos administrativos",
+      "Gestores",
+      "Setor de TI",
+      "Setor de infraestrutura",
+      "Coordenações e núcleos institucionais",
+      "Comunidade acadêmica e externa"
     ]
   }
 };
