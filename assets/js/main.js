@@ -43,7 +43,7 @@ if (slides.length > 1) {
 
 const camadasData = {
   solucao: {
-    titulo: "Camada de Problema e Solução",
+    titulo: "Camada de Conceito de Solução",
     descricao:
       "Representa o ponto de partida do modelo. Antes da escolha de tecnologias ou da definição da infraestrutura, é necessário compreender as demandas reais do câmpus, identificar os problemas e propor soluções capazes de gerar valor aos stakeholders.",
     itens: [
