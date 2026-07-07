@@ -278,6 +278,49 @@ async function buscarJSON(url, apiKey) {
 }
 
 /* =========================================================
+   CORREÇÃO DE HORÁRIO DO BANCO PARA HORÁRIO DE BRASÍLIA
+========================================================= */
+
+function criarDataCorrigidaBrasilia(timestamp) {
+  if (!timestamp) return null;
+
+  /*
+    O banco está retornando o horário com 3 horas adiantadas.
+    Exemplo:
+    Banco: 2026-06-07 16:50:00
+    Correto no site: 2026-06-07 13:50:00
+  */
+
+  const textoData = String(timestamp).replace(" ", "T");
+  const data = new Date(textoData);
+
+  if (Number.isNaN(data.getTime())) {
+    return null;
+  }
+
+  data.setHours(data.getHours() - 3);
+
+  return data;
+}
+
+function formatarHorarioBrasilia(timestamp) {
+  const dataCorrigida = criarDataCorrigidaBrasilia(timestamp);
+
+  if (!dataCorrigida) {
+    return timestamp || "Horário não informado";
+  }
+
+  return dataCorrigida.toLocaleString("pt-BR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  });
+}
+
+/* =========================================================
    GPS - MAPA DO BARCO-ESCOLA
 ========================================================= */
 
@@ -419,7 +462,11 @@ function atualizarGPS(dadosGPS) {
 
   if (gpsLat) gpsLat.textContent = dadosGPS.lat;
   if (gpsLng) gpsLng.textContent = dadosGPS.lng;
-  if (gpsStatus) gpsStatus.textContent = dadosGPS.atualizado_em ?? "Dado recebido";
+  if (gpsStatus) {
+  gpsStatus.textContent = dadosGPS.atualizado_em
+    ? `Atualizado: ${formatarHorarioBrasilia(dadosGPS.atualizado_em)}`
+    : "Dado recebido";
+}
 
   if (!mapaElemento || typeof L === "undefined") return;
 
@@ -616,8 +663,8 @@ function atualizarLeituraTanque(payloads) {
         : ultimoTimestampInterno || ultimoTimestampExterno;
 
     tankStatus.textContent = ultimoTimestamp
-      ? `Atualizado: ${ultimoTimestamp}`
-      : "Aguardando sensores";
+  ? `Atualizado: ${formatarHorarioBrasilia(ultimoTimestamp)}`
+  : "Aguardando sensores";
   }
 
   atualizarGaugeTanque(".gauge--tank-interno", ultimoTanqueInterno);
@@ -676,7 +723,7 @@ function montarSerie24hTanque(payloads) {
       valorExternoAtual = Number(ponto[SENSOR_TANQUE_EXTERNO]);
     }
 
-    const data = new Date(ponto.timestamp);
+    const data = criarDataCorrigidaBrasilia(ponto.timestamp);
 
     labels.push(
       data.toLocaleTimeString("pt-BR", {
